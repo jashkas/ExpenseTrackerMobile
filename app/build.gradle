@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    id("kotlin-kapt")
 }
 
 android {
@@ -53,4 +54,40 @@ dependencies {
     androidTestImplementation libs.androidx.ui.test.junit4
     debugImplementation libs.androidx.ui.tooling
     debugImplementation libs.androidx.ui.test.manifest
+
+    // Core
+    //implementation 'androidx.core:core-ktx:1.16.0'
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'com.google.android.material:material:1.12.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.2.1'
+
+    // Lifecycle & ViewModel
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.9.1'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.9.0'
+    implementation 'androidx.fragment:fragment-ktx:1.8.6'
+
+    // Navigation
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.9.0'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.9.0'
+
+    // Room для базы данных
+    implementation "androidx.room:room-runtime:2.7.1"
+    implementation "androidx.room:room-ktx:2.7.1"
+    implementation libs.androidx.foundation.layout.android
+    implementation libs.androidx.material3.android
+    kapt "androidx.room:room-compiler:2.7.1"
+
+    // Библиотеки для безопасности
+    implementation "androidx.security:security-crypto:1.1.0-alpha07"
+    implementation 'net.zetetic:android-database-sqlcipher:4.5.4'
+
+    // Аутентификация
+    implementation "com.auth0.android:jwtdecode:2.0.2"
+
+    // Для работы с датами
+    implementation 'com.jakewharton.threetenabp:threetenabp:1.4.6'
+
+    //testImplementation 'junit:junit:4.13.2'
+    //androidTestImplementation 'androidx.test.ext:junit:1.2.1'
+    //androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.1'
 }
