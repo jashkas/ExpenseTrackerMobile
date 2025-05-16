@@ -4,27 +4,24 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.expensetracker.data.model.Expense
-import net.sqlcipher.database.SQLiteDatabase
-import net.sqlcipher.database.SupportFactory
+import com.example.expensetracker.data.local.TransactionDao
+import com.example.expensetracker.data.model.Transaction
 
-@Database(entities = [Expense::class], version = 1)
+@Database(entities = [Transaction::class], version = 1, exportSchema = false)
 abstract class ExpenseDatabase : RoomDatabase() {
-    abstract fun expenseDao(): ExpenseDao
+    abstract fun transactionDao(): TransactionDao
 
     companion object {
         @Volatile
         private var INSTANCE: ExpenseDatabase? = null
 
-        fun getInstance(context: Context, passphrase: ByteArray): ExpenseDatabase {
+        fun getDatabase(context: Context): ExpenseDatabase {
             return INSTANCE ?: synchronized(this) {
-                val supportFactory = SupportFactory(SQLiteDatabase.getBytes("my-secret-passphrase".toCharArray()))
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     ExpenseDatabase::class.java,
-                    "expense_db"
+                    "expense_database"
                 )
-                    .openHelperFactory(supportFactory) // Шифрование базы данных
                     .fallbackToDestructiveMigration()
                     .build()
                 INSTANCE = instance

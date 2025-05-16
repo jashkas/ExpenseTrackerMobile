@@ -34,6 +34,7 @@ android {
     }
     buildFeatures {
         compose true
+        viewBinding true
     }
 }
 
@@ -55,41 +56,36 @@ dependencies {
     debugImplementation libs.androidx.ui.tooling
     debugImplementation libs.androidx.ui.test.manifest
 
-    // Core
-    //implementation 'androidx.core:core-ktx:1.16.0'
-    implementation 'androidx.appcompat:appcompat:1.7.0'
-    implementation 'com.google.android.material:material:1.12.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.2.1'
+    // Основные зависимости
+    implementation 'androidx.core:core-ktx:1.10.1'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.9.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.6.1'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.6.0'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.6.0'
 
-    // Lifecycle & ViewModel
-    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.9.1'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.9.0'
-    implementation 'androidx.fragment:fragment-ktx:1.8.6'
+    // Room Database
+    implementation 'androidx.room:room-runtime:2.5.2'
+    implementation 'androidx.room:room-ktx:2.5.2'
+    kapt 'androidx.room:room-compiler:2.5.2'
 
-    // Navigation
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.9.0'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.9.0'
+    // Retrofit for API calls
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.11.0'
 
-    // Room для базы данных
-    implementation "androidx.room:room-runtime:2.7.1"
-    implementation "androidx.room:room-ktx:2.7.1"
-    implementation libs.androidx.foundation.layout.android
-    implementation libs.androidx.material3.android
-    kapt "androidx.room:room-compiler:2.7.1"
+    // Security
+    implementation 'androidx.security:security-crypto:1.1.0-alpha06'
+    implementation 'com.auth0.android:jwtdecode:2.0.2'
 
-    // Библиотеки для безопасности
-    implementation "androidx.security:security-crypto:1.1.0-alpha07"
-    implementation 'net.zetetic:android-database-sqlcipher:4.5.4'
+    // DataStore for secure preferences
+    implementation 'androidx.datastore:datastore-preferences:1.0.0'
 
-    // Аутентификация
-    implementation "com.auth0.android:jwtdecode:2.0.2"
-
-    // Для работы с датами
-    implementation 'com.jakewharton.threetenabp:threetenabp:1.4.6'
-
-    //testImplementation 'junit:junit:4.13.2'
-    //androidTestImplementation 'androidx.test.ext:junit:1.2.1'
-    //androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.1'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
     implementation 'javax.inject:javax.inject:1'
 }
